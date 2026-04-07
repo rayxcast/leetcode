@@ -1,21 +1,20 @@
 class Solution:
     def isPalindrome(self, s: str) -> bool:
-
-        l, r = 0, (len(s)-1)
+        def format_string(s):
+            return "".join(filter(str.isalnum, s)).lower()
+        
+        s = format_string(s)
+        print(s)
+        if s == "":
+            return True
+        
+        l = 0
+        r = len(s) - 1
 
         while l <= r:
-            if not s[l].isalpha() and not s[l].isnumeric():
-                l+=1
-            elif not s[r].isalpha() and not s[r].isnumeric():
-                r-=1
-            else:
-                if s[l].lower() != s[r].lower():
-                    return False
-                l+=1
-                r-=1
-
-        return True
-
-
-
+            if s[l] != s[r]:
+                return False
+            l+=1
+            r-=1
         
+        return True
